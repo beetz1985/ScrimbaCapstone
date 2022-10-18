@@ -8,7 +8,7 @@ function Photos() {
     const photoData = useContext(Context)
 
     const photoElements = photoData.allPhotosData.map((v, i)=>{
-        return <Image key={v.id} id={v.id} imgUrl={v.url} className={`img-container ${getClass(i)}`}/>
+        return <Image key={v.id} fav={v.isFavorite} id={v.id} imgUrl={v.url} className={`img-container ${getClass(i)}`}/>
     })
 
     return (

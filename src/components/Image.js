@@ -1,20 +1,29 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import {Context} from '../CartContext'
 
-function Image({id, className, imgUrl}) {
+function Image({id, className, imgUrl, fav}) {
 
     const [hovered, setHovered] = useState(false)
+    const {toggleFav, addToCart, cartContent, removeFromCart} = useContext(Context)
 
-    return(
-        <div key={id} className={className}>
+    const favIconClass = fav ? "ri-heart-fill" : "ri-heart-line";
+    const inCart = cartContent.some(v=>v.id === id);
 
-            { hovered && <i className="ri-heart-line favorite"></i> }
-            { hovered && <i className="ri-add-circle-line cart"></i> }
+    const cartIconElement = inCart 
+        ? <i className={`ri-shopping-cart-fill cart`} onClick={()=>removeFromCart(id)}></i>
+        : <i className={`ri-add-circle-line cart`} onClick={()=>addToCart(id)}></i>
             
-            <img 
-                src={imgUrl} alt={id} 
-                onMouseEnter={()=>setHovered(true)}
-                onMouseLeave={()=>setHovered(false)}
-            />
+
+    return (
+        <div 
+            key={id} 
+            className={className}
+            onMouseEnter={()=>setHovered(true)}
+            onMouseLeave={()=>setHovered(false)}
+        >
+            <img src={imgUrl} alt={id} />
+            { (hovered || fav) && <i className={`${favIconClass} favorite`} onClick={()=>toggleFav(id)}></i> }
+            { (hovered || inCart) && cartIconElement }
             
         </div>
     )
