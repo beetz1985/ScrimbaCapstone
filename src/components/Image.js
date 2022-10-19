@@ -1,9 +1,10 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import {Context} from '../CartContext'
+import useHover from '../hooks/useHover'
 
 function Image({id, className, imgUrl, fav}) {
 
-    const [hovered, setHovered] = useState(false)
+    const [hovered, ref] = useHover()
     const {toggleFav, addToCart, cartContent, removeFromCart} = useContext(Context)
 
     const favIconClass = fav ? "ri-heart-fill" : "ri-heart-line";
@@ -18,8 +19,7 @@ function Image({id, className, imgUrl, fav}) {
         <div 
             key={id} 
             className={className}
-            onMouseEnter={()=>setHovered(true)}
-            onMouseLeave={()=>setHovered(false)}
+            ref={ref}
         >
             <img src={imgUrl} alt={id} />
             { (hovered || fav) && <i className={`${favIconClass} favorite`} onClick={()=>toggleFav(id)}></i> }

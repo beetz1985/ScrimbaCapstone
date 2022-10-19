@@ -13,3 +13,19 @@ root.render(
   </ContextProvider>
 );
 
+
+
+/*******
+ * ***React features used in this App include***
+ * 
+ * useState()
+ * useEffect()
+ * useContext()
+ * React Router
+ * <Link>
+ * Custom Hooks (useHover)
+ * useRef
+ * useEffect and useRef combined
+ * 
+ * PropTypes??
+*******/

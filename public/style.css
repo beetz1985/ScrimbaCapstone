@@ -81,3 +81,68 @@ header a {
     grid-column: span 2;
     grid-row: span 2;
 }
+
+
+/****Cart Page****/
+.cart-wrapper {
+    padding:20px;
+}
+
+.cart-item {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height:100px;
+    padding:6px;
+}
+
+.item-img-container {
+    height:100%;
+    width:200px;
+}
+
+.item-img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.item-price {
+    font-size: 1.5rem;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.ri-delete-bin-line, .ri-delete-bin-fill {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.order-button {
+    display: flex;
+    justify-content: center;
+}
+
+.order-button > button {
+    border-color: var(--black);
+    cursor: pointer;
+    padding: 15px;
+    transition: all .2s ease-in-out;
+}
+
+.order-button > button:focus {
+    outline: none;
+}
+
+.order-button > button:disabled {
+    border-color: lightgray;
+}
+
+.no-items-display {
+    display:flex;
+    justify-content: space-around;
+}
+
+.cart-total {
+    text-align: right;
+}
